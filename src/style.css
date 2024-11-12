@@ -1,0 +1,57 @@
+body {
+    font-family : 'Oswald' , sans-serif;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-family: 'Playfair Display', serif;
+}
+/* Define the animation */
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateY(-100%); /* Start off-screen to the left */
+      opacity: 0; /* Start with 0% opacity */
+    }
+    100% {
+      transform: translateY(0); /* End at its original position */
+        opacity: 1; /* End with 100% opacity */
+    }
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0; /* Start with 0% opacity */
+    }
+    100% {
+      opacity: 1; /* End with 100% opacity */
+    }
+  }
+  
+  /* Apply the animation to the header */
+  h1 {
+    animation: slideInFromLeft 2.1s ease-out; /* Duration and easing */
+    position: relative; /* Keeps the element in normal flow */
+  }
+
+  h4 {
+    animation: slideInFromLeft 1.8s ease-out; /* Duration and easing */
+    position: relative; /* Keeps the element in normal flow */
+  }
+
+  #hero {
+    animation: appear 1.4s ease-out; /* Duration and easing */
+    position: relative; /* Keeps the element in normal flow */
+    width: 90%;
+  }
+
+
+.card {
+    animation: appear 1.4s ease-out; /* Duration and easing */
+    position: relative; /* Keeps the element in normal flow */
+}
+
+#participantes img{
+    height: 10rem;
+    border-radius: 100%;
+}
