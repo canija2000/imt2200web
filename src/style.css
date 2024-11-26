@@ -4,8 +4,11 @@ body {
 
 p {
     font-size: 1.2rem;
-    line-height: 1.6;
     font-family: 'Playfair Display', serif;
+}
+
+ul {
+   font-family: 'Playfair Display', serif;
 }
 /* Define the animation */
 @keyframes slideInFromLeft {
@@ -55,3 +58,4 @@ p {
     height: 10rem;
     border-radius: 100%;
 }
+

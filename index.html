@@ -8,9 +8,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">  <link rel="stylesheet" href="src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
+
 
 </head>
 
@@ -29,72 +36,145 @@
         </header>
 
 
-        <section id ='hero' class="container m-4p-2 border rounded-3 h-5 jus4 m-1ify-centerz">
-            <img class="img-fluid " src="src/imgs/ej.png" alt="transporte">
+        <section id='hero' class="container m-4 p-2 border rounded-3 h-5 jus4 m-1ify-centerz">
+            <div id="map" style="height: 600px; width: 100%;"></div>
+            <!-- <img class="img-fluid " src="src/imgs/ej.png" alt="transporte"> -->
+            <p>
+                Fig. 0 - Mapa mostrando el índice IC, de cada comuna.
+            </p>
         </section>
 
+        <section class="container m-4">
+            <h5>
+                <b>IC:</b> Índice de cobertura de transporte público
+            </h5>
+            <p>
+                Considerando la información obtenida desde el <a
+                    href="https://www.dtpm.cl/index.php/documentos/informes-de-gestion">DTP</a> y la api <a
+                    href="https://overpass-turbo.eu">overpass-turbo</a>
+                , a través de la cual se pudo construir el mapa. Tenemos que el IC se calcula a través de dos índices:
+            <ul>
+                <li> <span style="text-decoration: underline; font-size: 1.3rem;"> Indice por habitante:</span>
+                    <p> Cantidad de paradas de autobuses por cada habitante de la comuna. <br>
+                        Se calcula como : N° Paradas / Población </p>
+                </li>
+                <li><span style="text-decoration: underline; font-size: 1.3rem;"> Indice por área:</span>
+                    Se mide la cantidad de paradas por kilómetro cuadrado de área urbanizada en la comuna.
+                    <br>
+                    Se calcula como: N° Paradas / Área urbanizada
 
-        <section id='graficos' class="container m-4 items-align-center mx-auto">
-            <section class="row justify-content-center items-align-center mx-auto">
+                </li>
+            </ul>
+        </p>
 
-                <div class="col-12 p-2 border rounded-3 col-md-3 m-1">
-                    <h3>Gráfico 1</h3>
-                    <img class="img-fluid" src="" alt="grafico1">
-                </div>
-                <div class="col-12 p-2 border rounded-3 col-md-3 m-1">
-                    <h3>Gráfico 2</h3>
-                    <img class="img-fluid" src="" alt="grafico2">
-                </div>
-                <div class="col-12 p-2 border rounded-3 col-md-3 m-1">
-                    <h3>Gráfico 3</h3>
-                    <img class="img-fluid" src="" alt="grafico2">
-                </div>
-            </section>
-
-            <section class="row justify-content-center items-align-center mx-auto">
-
-                <div class="col-12 p-2 border rounded-3 col-md-3 m-1">
-                    <h3>Gráfico 1</h3>
-                    <img class="img-fluid" src="" alt="grafico1">
-                </div>
-                <div class="col-12 p-2 border rounded-3 col-md-3 m-1">
-                    <h3>Gráfico 2</h3>
-                    <img class="img-fluid" src="" alt="grafico2">
-                </div>
-                <div class="col-12 p-2 border rounded-3 col-md-3 m-1">
-                    <h3>Gráfico 3</h3>
-                    <img class="img-fluid" src="" alt="grafico2">
-                </div>
-            </section>
-
-            <section class="row justify-content-center items-align-center mx-auto">
-
-                <div class="col-12 p-2 border rounded-3 col-md-3 m-1">
-                    <h3>Gráfico 1</h3>
-                    <img class="img-fluid" src="" alt="grafico1">
-                </div>
-                <div class="col-12 p-2 border rounded-3 col-md-3 m-1">
-                    <h3>Gráfico 2</h3>
-                    <img class="img-fluid" src="" alt="grafico2">
-                </div>
-                <div class="col-12 p-2 border rounded-3 col-md-3 m-1">
-                    <h3>Gráfico 3</h3>
-                    <img class="img-fluid" src="" alt="grafico2">
-                </div>
-            </section>
-  
-    </section>
-    <hr class="m-5">
-    <section id="info" class="container my-4">
-        <h2>Información</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus harum ipsum eos labore dolor quos quidem minus ea? Debitis reprehenderit unde facere ab perspiciatis, necessitatibus similique quaerat aperiam ipsa animi!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus harum ipsum eos labore dolor quos quidem minus ea? Debitis reprehenderit unde facere ab perspiciatis, necessitatibus similique quaerat aperiam ipsa animi!
+            <p>
+                Luego, el IC se calcula como el promedio de la suma de la normalizacion de estos índices, así :
             </p>
-    </section>
+                
+            <br>
+            <code class="items-align-center text-center mx-auto">
 
+                         IC = (norm(Indice por habitante) + norm(Indice por área)) / 2
+                     </code>
+
+        </section>
+        <section style="height: 5rem;"></section>
+
+        <section id='graficos' class="container m-2 items-align-center border rounded-3">
+            <section class="row items-align-center">
+
+                <div class="p-2 rounded-3 col-md-3">
+                    <h5>Cambio de porcentaje de hogares en el tramo 0-40% </h5>
+                    <img class="img-fluid" src="src/imgs/cambio_mapas.gif" alt="grafico1">
+                </div>
+                <div class="col-md-3 p-2">
+                    <h5>Cambio de porcentaje de hogares en tramo 70% - 100% </h5>
+                    <img class="img-fluid" src="src/imgs/cambio_mapas_alto.gif" alt="grafico2">
+                </div>
+                <div class="col-md-6 p-2 my-auto">
+                    <p class="p-5"> Otro análisis, en esta ocasión con los datos del BIDAT (Banco Integrado de Datos),
+                        muestra como se han movilizado los distintos tramos CSE (Clasificación Socioeconómica) en
+                        Santiago a través de los últimos años. El tramo CSE es una herramienta clasificatoria del RSH
+                        (Registro Social de Hogares) que agrupa los hogares de Chile según sus ingresos totales, los
+                        integrantes de la familia, las características de la vivienda y la educación de los miembros. Un
+                        tramo CSE bajo se traduce en menores ingresos y mayor vulnerabilidad, mientras que un tramo CSE
+                        alto en mayores ingresos y menor vulnerabilidad.</p>
+                </div>
+
+            </section>
+            <section class="row items-align-center">
+                <div class="col-md-6 p-2 my-auto mx-auto">
+                    <p class="p-5"> Dada una regresión lineal en los datos asociados a cada comuna, en cada año.
+                        Enteniendo que la pendiente representa la tendencia que han tenido estos valores a lo largo del
+                        tiempo (disminuido, mantenido o aumentado). Basta con entender la pendiente como una medida
+                        promedio del crecimiento de porcentaje en tramos altos y bajos durante los últimos años. Y así
+                        podemos visualizar todo en un gráfico con los valores de las pendientes. </p>
+                </div>
+                <div class="p-2 rounded-3 col-md-3">
+                    <h5>Estimación lineal del cambio de porcentaje de hogares en el tramo 0-40% </h5>
+                    <img class="img-fluid" src="src/imgs/comparacion_betas_bajos.png" alt="grafico1">
+                </div>
+                <div class="col-md-3 p-2">
+                    <h5>Estimación lineal del cambio de porcentaje de hogares en tramo 70% - 100% </h5>
+                    <img class="img-fluid" src="src/imgs/comparacion_betas.png" alt="grafico2">
+                </div>
+
+            </section>
+
+
+        </section>
+        <hr class="m-5">
+        <section id="info" class="container my-4">
+            <h2>Información</h2>
+            <p>
+                El proyecto, realizado por estudiantes de la UC, en el contexto del curso Introducción a la ciencia de
+                datos, tuvo como objetivo principal analizar los diferentes factores que involucran al funcionamiento,
+                lógica, distribución, cobertura y uso del transporte público en la región metropolitana.
+                Además de las observaciones que se muestran arriba, se realizaron análisis de otras variables, pues
+                entendimos que el comportamiento del servicio está determinado de varias cosas :
+            <ul>
+                <li>Situación Socioeconómica de la comuna</li>
+                <li>Principal activadad económica de la comuna</li>
+                <li>Distribuición de colegios/instituciones educacionales (densidad) </li>
+                <li>Distribuición de instituciones de salud (densidad) </li>
+                <li>Calidad del servicio </li>
+                <li>etc</li>
+            </ul>
+            </p>
+        </section>
+
+        <br class="m-5">
+
+        <section class="container">
+            <p>Veamos por ejemplo el comportamiento de los usuarios del metro a lo largo de los años :
+           
+           
+            </p>
+            <img class="img-fluid" src="src/imgs/millones_pasajeros_metro.png" alt="grafico1">
+        </section>
+
+        <section class="container m-5">
+            
+            <p>
+                
+                Por lo mismo, nos parece complejo tener una conclusión definitiva sobre el tema, o establecer un modelo opertivo respecto a su funcionamiento. Para aquello se requeriría más tiempo y datos. 
+                Si, podemos concluir que los útlimos años pareceriera ser que el descontento de los usuarios ha ido en aumento (hasta los datos registrados para el 2023).
+                Veamos también que luego de la pandemia (2020), los usuarios del metro no han logrado recuperarse al promedio que existió entre 2007 y 2019 [2 millones aprox en la Linea 1].
+            </p>
+            <p>
+                Para más información puede visitar el repositorio del proyecto en <a href="https://github.com/canija2000/IMT2200-Proyecto-Grupal">Github</a>
+            </p>
+
+        </section>
+        <div class="container  items-align-center text-center mx-auto mt-5">
+
+            <p class="mx-auto fs-6">Proyecto Grupal IMT2200-2 / 2024 </p>
+        </div>
     </main>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.15.0/proj4.js"
+        integrity="sha512-zlBm5j/0UjgCzqBVLkATd/2b9Yun4SzATXJ7v1T2KfjmP0iw8FUcG5mPD60SrdxU+tRkACm3IQRq55pEkp9Qow=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="main.js"></script>
 
 </body>
 
